@@ -19,7 +19,8 @@ let question1 = prompt("Введите обязательную статью р�
     question2 = prompt("Во сколько обойдется?", ''),
     question3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
     question4 = prompt("Во сколько обойдется?", '');
-appData.expenses = [ (question1), (question2), (question3), (question4) ];
+appData.expenses [question1] = (question2);
+appData.expenses [question3] = (question4);
 console.log(appData.expenses);
 
 //задание 5 - Вывести на экран пользователя бюджет на 1 день (брать месяц за 30 дней)
