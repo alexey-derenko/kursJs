@@ -15,15 +15,14 @@ let appData = {
 };
 
 //задание 4 - Задать пользователю по 2 раза вопросы:
-let question1 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-    question2 = prompt("Во сколько обойдется?", ''),
-    question3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
-    question4 = prompt("Во сколько обойдется?", '');
-appData.expenses [question1] = (question2);
-appData.expenses [question3] = (question4);
+let q1 = prompt("Введите обязательную статью расходов в этом месяце", ''),
+    q2 = prompt("Во сколько обойдется?", ''),
+    q3 = prompt("Введите обязательную статью расходов в этом месяце", ''),
+    q4 = prompt("Во сколько обойдется?", '');
+appData.expenses[q1] = q2;
+appData.expenses[q3] = q4;
 console.log(appData.expenses);
 
-//задание 5 - Вывести на экран пользователя бюджет на 1 день (брать месяц за 30 дней)
 alert(appData.budget / 30);
 
 
