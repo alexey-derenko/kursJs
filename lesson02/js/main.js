@@ -14,7 +14,7 @@ let appData = {
     savings: false
 };
 
-
+/* первый вариант цикла
 for (let i = 0; i < 2; i++) {
     let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
         b = prompt("Во сколько обойдется?", '');
@@ -27,10 +27,8 @@ for (let i = 0; i < 2; i++) {
         i--;
     }
 };
+*/
 
-
-
-/* первый вариант цикла
 let i=0;
 while ( i < 2) {
     let a = prompt("Введите обязательную статью расходов в этом месяце", ''),
@@ -40,12 +38,11 @@ while ( i < 2) {
         && a != '' && b != '' && a.length < 50) {
             console.log ("done");
             appData.expenses[a] = b;
-        } else {
-            i--;
-        }
-    i++;
+            i++;
+        } 
+    
     };
-*/
+
 
 /* второй вариант цикла 
 let i=0;
@@ -57,14 +54,11 @@ do {
         && a != '' && b != '' && a.length < 50) {
             console.log ("done");
             appData.expenses[a] = b;
-        } else {
-            i--;
+            i++;
         }
-    i++;
     } while (i < 2);
-
     */
-           
+
 
 appData.moneyPerDay = appData.budget / 30
 
@@ -79,4 +73,3 @@ if (appData.moneyPerDay < 100) {
 } else {
     console.log("Произошла ошибка")
 }
-
