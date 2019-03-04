@@ -8,6 +8,7 @@ let appData = {
     moneyPerDay: '',
     timeData: time, //данные времени - timeData (передаем сюда переменную из п.2)
     expenses: {}, //объект с обязательными расходами - expenses
+    noExpenses: {},//объект с не обязательными расходами - expenses
     optionalExpenses: {}, //объект с обязательными расходами
     income: [], // массив данных с доп. доходом - income (оставляем пока пустым)
     savings: false
@@ -56,7 +57,8 @@ function chooseOptExpenses (c,d) {
         if ((typeof (c)) === 'string' && (typeof (c)) != null && (typeof (d)) != null &&
             c != '' && d != '' && c.length < 50) {
             console.log("done");
-            appData.expenses[c] = d;
+            appData.noExpenses[c] = d;
+            console.log(appData.noExpenses);
         } else {
             i--;
         }
