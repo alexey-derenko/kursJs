@@ -63,7 +63,7 @@ let appData = {
     },   
     chooseIncome: function() {
         let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-        if ((typeof(items)) === 'string' && (typeof(items)) != null && (typeof(items)) != '')  {
+        if (typeof(items) === 'string' && typeof(items) != null && typeof(items) != '')  {
             console.log(items);
             appData.income.push(prompt('Может что-то еще?', '')); 
             appData.income = items.split(', ');                
