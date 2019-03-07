@@ -62,17 +62,20 @@ let appData = {
         }
     },   
     chooseIncome: function() {
-        let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-        if (typeof(items) === 'string' && typeof(items) != null && items != '')  {
-            appData.income = items.split(', ');
-            //console.log(items);              
-            appData.income.push(prompt('Может что-то еще?', '')); 
-            appData.income.sort();
-            appData.income.forEach(function(item,i) {               
-               console.log(" Способы доп. заработка: " + (++i) + ' ' + appData.income);
-            });
-        } else {
-            alert("Перечислите текст через запятую", '');            
+        for (let i = 0; i < 1; i++) {
+            let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+            if (typeof(items) === 'string' && typeof(items) != null && items != '')  {
+                appData.income = items.split(', ');
+                //console.log(items);              
+                appData.income.push(prompt('Может что-то еще?', '')); 
+                appData.income.sort();
+                appData.income.forEach(function(item,i) {               
+                console.log(" Способы доп. заработка: " + (++i) + ' ' + appData.income);
+                });
+            } else {
+                alert("Перечислите текст через запятую", ''); 
+                i--;           
+            }            
         }    
     }   
 };
@@ -81,7 +84,7 @@ appData.chooseIncome();
 
 //    3) Используя цикл for in для объекта (appData) вывести в консоль сообщение "Наша программа включает в себя данные: " (вывести весь appData)
  for (const key in appData) {
-    console.log("Наша программа включает в себя данные: " + appData());
+    console.log("Наша программа включает в себя данные: " + appData[key]);
  }      
 
 
