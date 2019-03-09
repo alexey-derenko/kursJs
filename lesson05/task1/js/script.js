@@ -12,7 +12,7 @@ let menuItem = document.getElementsByClassName('menu-item'),
     menu[0].appendChild(li);
     li.classList.add('menu-item');
     li.innerHTML='Пятый пункт';
-    document.body.style.backgroundImage = "url('../img/apple_true.jpg')";
+    document.body.style.backgroundImage = "url('img/apple_true.jpg')";
     title.innerHTML='Мы продаем только подлинную технику Apple';
  //  document.body.elem1.getElementsByClassName
     elem.remove();
