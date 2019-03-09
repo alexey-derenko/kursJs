@@ -9,7 +9,7 @@ let startBtn = document.getElementById("start"),
     monthSavingsValue = document.getElementsByClassName('monthsavings-value')[0],
     yearSavingsValue = document.getElementsByClassName('yearsavings-value')[0],
 
-    expensesItem = document.getElementsByClassName('.expenses-item'),
+    expensesItem = document.getElementsByClassName('expenses-item'),
     expensesBtn = document.getElementsByTagName('button')[0],
     optionalExpensesBtn = document.getElementsByTagName("button")[1],
     countBtn = document.getElementsByTagName("button")[2],
@@ -40,6 +40,38 @@ startBtn.addEventListener('click', function() {
     dayValue.value = new Date(Date.parse(time)).getDate();
 });
 
+
+// expensesBtn.addEventListener('click', function() {
+//     if (budgetValue.value != ''|| budgetValue.value == undefined) {
+//         let sum = 0;
+
+//         for (let i = 0; i < expensesItem.length; i++) {
+//             let a = expensesItem[i].value,
+//                 b = expensesItem[++i].value;
+        
+//             if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+//                 console.log("Все верно");
+//                 appData.expenses[a] = b;
+//                 sum += +b;      // no work     
+//             } else {
+//                 i = i-1; 
+//             }
+//             expensesValue.textContent = sum; 
+//         }
+//     } else {
+//         //event.preventDefault();
+//              console.log("попали сюда");     
+//         // expensesBtn.addEventListener('click', function(event) {
+//         //     event.preventDefault();
+//         //     console.log("попали сюда");
+
+//         // });
+        
+//     } 
+        
+        
+// });
+
 expensesBtn.addEventListener('click', function() { 
     let sum = 0;
 
@@ -50,7 +82,7 @@ expensesBtn.addEventListener('click', function() {
         if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
             console.log("Все верно");
             appData.expenses[a] = b;
-            sum += b;      // no work     
+            sum += +b;      // no work     
         } else {
             i = i -1; 
         }
@@ -135,3 +167,18 @@ percentValue.addEventListener('input', function() {
         timeData: time,    
         savings: false
     };
+        
+
+
+// 2) Если программа еще не запущена( не нажали кнопку "Начать расчет") или нужное(соответственное) 
+//для заполнения поле пустое - сделать кнопки неактивными. (Например, если ни одно поле обязательных расходов не заполнено - 
+//блокируем кнопку "Утвердить")
+
+// 3) Реализовать функционал: при расчете дневного бюджета учитывать сумму обязательных трат 
+//(т. e. от бюджета на месяц отнимаем общую сумму всех обяз. трат и ее делим на 30 дней)
+
+// 4) Проверить, чтобы все работало и не было ошибок в консоли
+
+// 5) Добавить папку с уроком на свой GitHub
+
+// 6) Ознакомиться с объектом Date

@@ -1,9 +1,17 @@
-let arr = [100]; 
-for (i=0; i<100; i++) {
-    console.log((i+1) + " Делители данного числа - " + (i+1) + " и " + "1");  
-}
+// let arr = [10]; 
+// for (i=0; i<10; i++) {
+//     if 
+//     console.log((i+1) + " Делители данного числа - " + (i+1) + " и " + "1");  
+// }
   
-
+var arr = [];
+for(var i=3;i<=100;i+=2) {
+  if(arr.every(function(arr){return i%arr!=0})) {
+    arr.push(i);
+  }
+}
+arr.unshift(2);
+console.log(arr)
 
 
 
