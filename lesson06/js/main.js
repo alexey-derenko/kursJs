@@ -25,6 +25,16 @@ let startBtn = document.getElementById("start"),
     
 let money, time;
 
+expensesBtn.disabled = true;
+expensesBtn.style.backgroundImage = 'none';
+optionalExpensesBtn.disabled = true;
+optionalExpensesBtn.style.backgroundImage = 'none';
+countBtn.disabled = true;
+countBtn.style.backgroundImage = 'none';
+
+
+
+
 startBtn.addEventListener('click', function() {
     time = prompt("Введите дату в формате YYYY-MM-DD", "YYYY-MM-DD");
     money = +prompt("Ваш бюджет на месяц?", "");
@@ -38,70 +48,107 @@ startBtn.addEventListener('click', function() {
     yearValue.value = new Date(Date.parse(time)).getFullYear();
     monthValue.value = new Date(Date.parse(time)).getMonth() + 1; //+1 месяц начинается с нуля
     dayValue.value = new Date(Date.parse(time)).getDate();
+    expensesBtn.disabled = false;
+
+
+    expensesBtn.style.disabled = false;
+    expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+    optionalExpensesBtn.disabled = false;
+    optionalExpensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+    countBtn.disabled = false;
+    countBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+    //document.getElementsByTagName('button')[1].style.display = 'block';
+    
 });
 
+expensesBtn.addEventListener('mouseover', function () {
+    if ((expensesItem[0].value =='') || (expensesItem[1].value =='') || (expensesItem[2].value =='') || (expensesItem[3].value =='')) {
+         
+        alert('Заполните поля ввода для расчета обязательных расходов!'); 
+    } else {
+        expensesBtn.style.disabled = false;
+        expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+    }
+});
 
-// expensesBtn.addEventListener('click', function() {
-//     if (budgetValue.value != ''|| budgetValue.value == undefined) {
-//         let sum = 0;
-
-//         for (let i = 0; i < expensesItem.length; i++) {
-//             let a = expensesItem[i].value,
-//                 b = expensesItem[++i].value;
+expensesBtn.addEventListener('click', function() { 
+    if ((expensesItem[0].value =='') || (expensesItem[1].value =='') || (expensesItem[2].value =='') || (expensesItem[3].value =='')) {
+        alert('Заполните поля ввода для расчета обязательных расходов!');   
         
-//             if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-//                 console.log("Все верно");
-//                 appData.expenses[a] = b;
-//                 sum += +b;      // no work     
-//             } else {
-//                 i = i-1; 
-//             }
-//             expensesValue.textContent = sum; 
+    } else {
+        let sum = 0;
+
+        for (let i = 0; i < expensesItem.length; i++) {
+            let a = expensesItem[i].value,
+                b = expensesItem[++i].value;
+        
+            if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+                console.log("Все верно");
+                appData.expenses[a] = b;
+                sum += +b;      // no work     
+            } else {
+                i = i -1; 
+            }
+            expensesValue.textContent = sum; 
+        }
+       
+    }  
+});
+
+// expensesBtn.addEventListener('click', function() { 
+//     let sum = 0;
+
+//     for (let i = 0; i < expensesItem.length; i++) {
+//         let a = expensesItem[i].value,
+//             b = expensesItem[++i].value;
+    
+//         if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+//             console.log("Все верно");
+//             appData.expenses[a] = b;
+//             sum += +b;      // no work     
+//         } else {
+//             i = i -1; 
 //         }
-//     } else {
-//         //event.preventDefault();
-//              console.log("попали сюда");     
-//         // expensesBtn.addEventListener('click', function(event) {
-//         //     event.preventDefault();
-//         //     console.log("попали сюда");
-
-//         // });
-        
-//     } 
-        
+//         expensesValue.textContent = sum; 
+//     }
         
 // });
 
-expensesBtn.addEventListener('click', function() { 
-    let sum = 0;
-
-    for (let i = 0; i < expensesItem.length; i++) {
-        let a = expensesItem[i].value,
-            b = expensesItem[++i].value;
-    
-        if ((typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-            console.log("Все верно");
-            appData.expenses[a] = b;
-            sum += +b;      // no work     
-        } else {
-            i = i -1; 
-        }
-        expensesValue.textContent = sum; 
+optionalExpensesBtn.addEventListener('mouseover', function () {
+    if ((optionalExpensesItem[0].value =='') || (optionalExpensesItem[1].value =='') || (optionalExpensesItem[2].value =='')) {
+         
+        alert('Заполните поля ввода для расчета необязательных расходов!'); 
+    } else {
+        optionalExpensesBtn.style.disabled = false;
+        optionalExpensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
     }
-        
 });
-    
+
 optionalExpensesBtn.addEventListener('click', function () {
-    for (let i = 0; i < optionalExpensesItem.length; i++) {
+    if ((optionalExpensesItem[0].value =='') || (optionalExpensesItem[1].value =='') || (expensesItem[2].value =='')) {
+        alert('Заполните поля ввода для расчета необязательных расходов!');          
+    } else {
+        for (let i = 0; i < optionalExpensesItem.length; i++) {
         let opt = optionalExpensesItem[i].value;
             appData.optionalExpenses[i] = opt;
             optionalExpensesValue.textContent += appData.optionalExpenses[i] + '  ';
+        }
     }
 });
 
+
+
+// optionalExpensesBtn.addEventListener('click', function () {
+//     for (let i = 0; i < optionalExpensesItem.length; i++) {
+//         let opt = optionalExpensesItem[i].value;
+//             appData.optionalExpenses[i] = opt;
+//             optionalExpensesValue.textContent += appData.optionalExpenses[i] + '  ';
+//     }
+// });
+
 countBtn.addEventListener('click', function() {
     if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / 30).toFixed();
+        appData.moneyPerDay = ((appData.budget-expensesValue.innerText) / 30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {

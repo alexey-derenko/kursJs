@@ -9,9 +9,12 @@ for(var i=3;i<=100;i+=2) {
   if(arr.every(function(arr){return i%arr!=0})) {
     arr.push(i);
   }
+ 
 }
 arr.unshift(2);
-console.log(arr)
+console.log(JSON.stringify(arr));
+
+//console.log(arr[i++]); 
 
 
 
