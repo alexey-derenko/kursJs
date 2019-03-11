@@ -61,15 +61,49 @@ startBtn.addEventListener('click', function() {
     
 });
 
-expensesBtn.addEventListener('mouseover', function () {
-    if ((expensesItem[0].value =='') || (expensesItem[1].value =='') || (expensesItem[2].value =='') || (expensesItem[3].value =='')) {
+// for (i=0;i<3;i++) {
+//     expensesItem[i].addEventListener('change', function(e) {
+//         console.log(e);
+//         let target = e.target;
+//         target.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+//     });
+// }
+
+
+//Не работает и expensesItem[0] и expensesItem[1], только по оддельности
+ for (let i=0;i<4;i++) {
+    expensesItem[i].addEventListener('input', function() {
+        // let e = expensesItem[0].value;
+        if (expensesItem[i].value != '') {
+            expensesBtn.style.disabled = false;
+            expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+            console.log(expensesItem[i].value);              
+        } else {
+            alert('Заполните поля ввода для расчета обязательных расходов!');
+        }
+    });
+ };
+    
+// if expensesItem[i].value !=='' {
+        //     expensesBtn.style.disabled = false;
+        //     expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+            
+        // } else {
+        //     alert('Заполните поле обязательных расходов!');
+        //     i=i-1; 
+        // }
+    // });
+// };
+
+// expensesBtn.addEventListener('mouseover', function () {
+//     if ((expensesItem[0].value =='') || (expensesItem[1].value =='') || (expensesItem[2].value =='') || (expensesItem[3].value =='')) {
          
-        alert('Заполните поля ввода для расчета обязательных расходов!'); 
-    } else {
-        expensesBtn.style.disabled = false;
-        expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
-    }
-});
+//         alert('Заполните поля ввода для расчета обязательных расходов!'); 
+//     } else {
+//         expensesBtn.style.disabled = false;
+//         expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+//     }
+// });
 
 expensesBtn.addEventListener('click', function() { 
     if ((expensesItem[0].value =='') || (expensesItem[1].value =='') || (expensesItem[2].value =='') || (expensesItem[3].value =='')) {
