@@ -61,67 +61,85 @@ startBtn.addEventListener('click', function() {
     
 });
 
-// for (let i = 0; i < expensesItem.length; i++) {
-        //     let a = expensesItem[i].value,
-        //         b = expensesItem[++i].value;
-        //         if ( (typeof(a)) === 'string' && (typeof(a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-        //             appData.expenses[a] = b;
-        //             sum += +b;
-        //             expensesBtn.disabled = false;
-        //             //expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
-        //             expensesBtn.style.backgroundColor = 'blue';
-        //         } else {
-        //             expensesBtn.disabled = true;
-        //         };
-            
-        // };
-
-
 
 document.body.addEventListener('input', e => {
-    let target = e.target;
-    let sum = 0;
+    let target = e.target;    
     if (target.classList.contains('expenses-item')) {        
         for (let i = 0; i < expensesItem.length; i++) {
-            let a = expensesItem[i].value,
-            
-                b = expensesItem[++i].value;
-        
+            let a = expensesItem[i].value,            
+                b = expensesItem[++i].value;        
             if ( (typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-                console.log("Все верно");
-                appData.expenses[a] = b;
-                sum += +b;      // no work 
                 expensesBtn.disabled = false; 
-                expensesBtn.style.backgroundColor = 'blue';   
+                expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';        
             } else {
-                i = i -1; 
                 expensesBtn.disabled = true;
-            }
-            expensesValue.textContent = sum; 
+            }                     
         }
-    };
+    };     
 });
 
-
-optionalExpensesBtn.addEventListener('mouseover', function () {
-    if ((optionalExpensesItem[0].value =='') || (optionalExpensesItem[1].value =='') || (optionalExpensesItem[2].value =='')) {
-         
-        alert('Заполните поля ввода для расчета необязательных расходов!'); 
-    } else {
-        optionalExpensesBtn.disabled = false;
-        optionalExpensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';
+expensesBtn.addEventListener('click', function () {
+    for (let i = 0; i < expensesItem.length; i++) {
+        let a = expensesItem[i].value,
+            sum = 0;            
+            b = expensesItem[++i].value;
+    
+        if ( (typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+            console.log("Все верно");
+            appData.expenses[a] = b;
+            sum += +b;      // no work 
+            expensesBtn.disabled = false; 
+            expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';                
+                
+        } else {
+            i = i -1; 
+            expensesBtn.disabled = true;  
+        }
+        expensesValue.textContent = sum;            
     }
 });
 
+
+// document.body.addEventListener('input', e => {
+//     let target = e.target;
+//     let sum = 0;
+//     if (target.classList.contains('expenses-item')) {        
+//         for (let i = 0; i < expensesItem.length; i++) {
+//             let a = expensesItem[i].value,            
+//                 b = expensesItem[++i].value;
+        
+//             if ( (typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
+//                 console.log("Все верно");
+//                 appData.expenses[a] = b;
+//                 sum += +b;      // no work 
+//                 expensesBtn.disabled = false; 
+//                 expensesBtn.style.backgroundImage = 'linear-gradient(336deg,#ffbd75,#ff964b),linear-gradient(#fff,#fff)';                
+                    
+//             } else {
+//                 i = i -1; 
+//                 expensesBtn.disabled = true;
+//             }
+
+//             expensesValue.textContent = sum;            
+//         }
+//     };
+     
+// });
+
+expensesBtn.addEventListener('click', function () {
+
+});
+
 optionalExpensesBtn.addEventListener('click', function () {
-    if ((optionalExpensesItem[0].value =='') || (optionalExpensesItem[1].value =='') || (expensesItem[2].value =='')) {
-        alert('Заполните поля ввода для расчета необязательных расходов!');          
-    } else {
+    if ((optionalExpensesItem[0].value !='') || (optionalExpensesItem[1].value !='') || (expensesItem[2].value !='')) {
         for (let i = 0; i < optionalExpensesItem.length; i++) {
-        let opt = optionalExpensesItem[i].value;
-            appData.optionalExpenses[i] = opt;
-            optionalExpensesValue.textContent += appData.optionalExpenses[i] + '  ';
-        }
+            let opt = optionalExpensesItem[i].value;
+                appData.optionalExpenses[i] = opt;
+                optionalExpensesValue.textContent += appData.optionalExpenses[i] + '  ';
+            }       
+    } else {
+       
+        alert('Заполните поля ввода для расчета необязательных расходов!'); 
     }
 });
 
