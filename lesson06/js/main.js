@@ -63,7 +63,7 @@ startBtn.addEventListener('click', function() {
 
 
 document.body.addEventListener('input', e => {
-    let target = e.target;    
+    let target = e.target;            
     if (target.classList.contains('expenses-item')) {        
         for (let i = 0; i < expensesItem.length; i++) {
             let a = expensesItem[i].value,            
@@ -79,13 +79,14 @@ document.body.addEventListener('input', e => {
 });
 
 expensesBtn.addEventListener('click', function () {
+    let sum = 0;
     for (let i = 0; i < expensesItem.length; i++) {
-        let a = expensesItem[i].value,
-            sum = 0;            
+        let a = expensesItem[i].value,                   
             b = expensesItem[++i].value;
     
         if ( (typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
             console.log("Все верно");
+            
             appData.expenses[a] = b;
             sum += +b;      // no work 
             expensesBtn.disabled = false; 
@@ -95,8 +96,9 @@ expensesBtn.addEventListener('click', function () {
             i = i -1; 
             expensesBtn.disabled = true;  
         }
-        expensesValue.textContent = sum;            
+        //expensesValue.textContent = sum;            
     }
+    expensesValue.textContent = sum;
 });
 
 
@@ -126,9 +128,7 @@ expensesBtn.addEventListener('click', function () {
      
 // });
 
-expensesBtn.addEventListener('click', function () {
 
-});
 
 optionalExpensesBtn.addEventListener('click', function () {
     if ((optionalExpensesItem[0].value !='') || (optionalExpensesItem[1].value !='') || (expensesItem[2].value !='')) {
