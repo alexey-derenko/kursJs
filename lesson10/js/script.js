@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    info.addEventListener('click', function(event) {
+    info.addEventListener('click', (event) => {
         let target = event.target;
         if (target && target.classList.contains('info-header-tab')) {
             for(let i = 0; i < tab.length; i++) {
@@ -111,42 +111,32 @@ window.addEventListener('DOMContentLoaded', function() {
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close');
 
-    more.addEventListener('click', function() {
-        let showModal = () => {
+    more.addEventListener('click', () => {        
             overlay.style.display = 'block';
             this.classList.add('more-splash');
             document.body.style.overflow = 'hidden'; 
-            //запрещаем прокрутку фона при открытом модальном окне
-        };
-        showModal();
-        
+            //запрещаем прокрутку фона при открытом модальном окне      
     });
 
-    close.addEventListener('click', function() {
-        let closeModal = () => {
+    close.addEventListener('click', () => {
             overlay.style.display = 'none';
             more.classList.remove('more-splash');
-            document.body.style.overflow = '';
-        };
-        closeModal();
+            document.body.style.overflow = '';    
     });
     
     let descriptionBtn = document.querySelectorAll('.description-btn'); 
     //используем селекторолл так как в проекте много классов .description-btn 
     //и работаем с массивом кнопок
 
-    descriptionBtn.forEach(function (item) {
-        //перебираем массив конопок .description-btn
-        item.addEventListener('click', function() {
-            let first = () => { //пример стрелочной функции, можно и без нее
-                overlay.style.display = 'block';
-                this.classList.add('more-splash');
-                document.body.style.overflow = 'hidden';
-            };
-            first();        
+    descriptionBtn.forEach( (item) => {        
+        item.addEventListener('click', () => {            
+            overlay.style.display = 'block';
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden';                  
         });
     });     
 });
 
 
-//
+// elem.addEventListener('click', () =>{} , 
+//а не  elem.addEventListener('click', function(){ let func = () => {} 
