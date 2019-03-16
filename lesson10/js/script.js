@@ -89,21 +89,18 @@ window.addEventListener('DOMContentLoaded', () => {
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
-            timeInterval = setInterval(updateClock, 1000);
-
-        let updateClock = () => {
+            timeInterval = setInterval(updateClock, 1000),
+            updateClock = () => {
             let t = getTimeRemaining(endtime);
-            hours.textContent = t.hours;
-            minutes.textContent = t.minutes;
-            seconds.textContent = t.seconds;
-
-            if (t.total <= 0) {
-                clearInterval(timeInterval);                
-            }           
-
-        }    
-    }
-
+                hours.textContent = t.hours;
+                minutes.textContent = t.minutes;
+                seconds.textContent = t.seconds;
+        
+                if (t.total <= 0) {
+                    clearInterval(timeInterval);                
+                }           
+            };
+        };    
     setClock('timer', deadline);
    
     // Modal
@@ -113,10 +110,10 @@ window.addEventListener('DOMContentLoaded', () => {
         close = document.querySelector('.popup-close');
 
     more.addEventListener('click', () => {        
-            overlay.style.display = 'block';
-            more.classList.add('more-splash');
-            document.body.style.overflow = 'hidden'; 
-            //запрещаем прокрутку фона при открытом модальном окне      
+        overlay.style.display = 'block';
+        more.classList.add('more-splash');
+        document.body.style.overflow = 'hidden'; 
+        //запрещаем прокрутку фона при открытом модальном окне      
     });
 
     close.addEventListener('click', () => {
