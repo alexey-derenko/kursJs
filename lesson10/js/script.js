@@ -5,13 +5,12 @@ window.addEventListener('DOMContentLoaded', () => {
         info = document.querySelector('.info-header'),
         tabContent = document.querySelectorAll('.info-tabcontent');
 
-    let hideTabContent = (a) => {    
+    let hideTabContent = (a) => {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].classList.remove('show');
             tabContent[i].classList.add('hide');
-        }
+        }       
     };
-
 
     hideTabContent(1);
 
@@ -20,32 +19,35 @@ window.addEventListener('DOMContentLoaded', () => {
             tabContent[b].classList.remove('hide');
             tabContent[b].classList.add('show');
         }
-    }
-
+    };
+    
     info.addEventListener('click', (event) => {
         let target = event.target;
         if (target && target.classList.contains('info-header-tab')) {
-            for(let i = 0; i < tab.length; i++) {
-                if (target == tab[i]) {
+            tab.forEach((item,i) => {
+                if (target == item) {
                     hideTabContent(0);
                     showTabContent(i);
-                    break;
                 }
-            }
+            });           
         }
     });
+
+  
+
+    
 
     
     // Timer
 
-    let deadline = '2018-03-15';
+    let deadline = '2019-03-18';
 
     let checkTime = (i) => {
         if ( i < 10) {
             i="0" + i;
         }
     return i;
-    }
+    };
 
 
         let getTimeRemaining = (endtime) => {        
@@ -82,14 +84,13 @@ window.addEventListener('DOMContentLoaded', () => {
             'minutes' : minutes,
             'seconds' : seconds
         };
-    }
+    };
 
     let setClock = (id, endtime) => {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
-            seconds = timer.querySelector('.seconds'),
-            timeInterval = setInterval(updateClock, 1000),
+            seconds = timer.querySelector('.seconds'),            
             updateClock = () => {
             let t = getTimeRemaining(endtime);
                 hours.textContent = t.hours;
@@ -99,7 +100,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 if (t.total <= 0) {
                     clearInterval(timeInterval);                
                 }           
-            };
+            },
+            timeInterval = setInterval(updateClock, 1000);
         };    
     setClock('timer', deadline);
    
