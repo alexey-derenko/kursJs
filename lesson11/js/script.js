@@ -128,7 +128,11 @@ window.addEventListener('DOMContentLoaded', () => {
     //используем селекторолл так как в проекте много классов .description-btn 
     //и работаем с массивом кнопок
 
+<<<<<<< HEAD
     descriptionBtn.forEach( (item) => {        //Тут трабл спросить у наставника
+=======
+    descriptionBtn.forEach( (item) => {        
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
         item.addEventListener('click', () => {            
             overlay.style.display = 'block';
             item.classList.add('more-splash');
@@ -138,14 +142,22 @@ window.addEventListener('DOMContentLoaded', () => {
     
     //Form
 
+<<<<<<< HEAD
     let message = {
+=======
+    let massage = {
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
         loading: 'Загрузка ...',
         success: 'Спасибо! Скоро мы с вами свяжемся!',
         failure: 'Что-то пошо не так',
     };
 
     let form = document.querySelector('.main-form'),
+<<<<<<< HEAD
         input = form.getElementsByTagName('input')[0],       
+=======
+        input = form.getElementsByTagName('input'),
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
         statusMessage = document.createElement('div');
 
         statusMessage.classList.add('status');
@@ -155,11 +167,20 @@ window.addEventListener('DOMContentLoaded', () => {
         form.appendChild(statusMessage);
 
         let request = new XMLHttpRequest();
+<<<<<<< HEAD
         request.open('POST', 'server.php');       
         request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 
         let formData = new FormData(form);     
         
+=======
+        request.open('POST', 'server.php');
+        // request.setRequestHeader('Content-Type', 'application/x-www-urlencoded');
+        request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+
+        let formData = new FormData(form);
+
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
         let obj = {};
         formData.forEach(function(value, key) {
             obj[key] = value;
@@ -167,6 +188,7 @@ window.addEventListener('DOMContentLoaded', () => {
         let json = JSON.stringify(obj);
         
         request.send(json);
+<<<<<<< HEAD
         //console.log(input[0]);
 
        
@@ -237,6 +259,38 @@ window.addEventListener('DOMContentLoaded', () => {
     formContact.addEventListener('submit', function(event) {
         event.preventDefault();
         console.log(document.getElementsByClassName('contact-form'));
+=======
+
+        request.addEventListener('readystatechange', function() {
+            if (request.readyState < 4) {
+                statusMessage.innerHTML = massage.loading;
+            } else if (request.readyState === 4 && request.status == 200) {
+                statusMessage.innerHTML = massage.success;
+            } else {
+                statusMessage.innerHTML = massage.failure;
+            }
+        });
+        for (let i = 0; i < input.length; i++) {
+            input[i].value = '';
+        } 
+    });
+
+    //ContactForm
+    // let massage = {
+    //     loading: 'Загрузка ...',
+    //     success: 'Спасибо! Скоро мы с вами свяжемся!',
+    //     failure: 'Что-то пошо не так',
+    // };
+
+    let formContact = document.querySelector('#form'),
+        inputContact = formContact.getElementsByTagName('input'),
+        statusMessageContact = document.createElement('div');
+
+    statusMessageContact.classList.add('status');
+    
+    formContact.addEventListener('submit', function(event) {
+        event.preventDefault();
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
         formContact.appendChild(statusMessageContact);
         
         let request = new XMLHttpRequest();
@@ -258,6 +312,7 @@ window.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < inputContact.length; i++) {            
             inputContact[i].value = '';            
         } 
+<<<<<<< HEAD
     });
 
 
@@ -271,3 +326,13 @@ window.addEventListener('DOMContentLoaded', () => {
     
     });
 });
+=======
+    })
+
+    
+});
+
+
+// elem.addEventListener('click', () =>{} , 
+//а не  elem.addEventListener('click', function(){ let func = () => {} 
+>>>>>>> a4cd9c5e42824d8e0ecf45fe4d5f28c6c112a0ed
