@@ -22,6 +22,18 @@ $(document).ready(function() {
                 height: 'toggle'
             }, 3000);
     }); 
+
+    $('li:nth-child(2)').click(function(){
+        $('.overlay').animate(
+            {
+                opacity:'toggle',                
+            }, 2000);       
+        $('.modal').animate(
+            {
+                opacity:'toggle',
+                height: 'toggle'
+            }, 3000);
+    }); 
     
     $('.close').click(function(){        
         $('.modal').animate(
